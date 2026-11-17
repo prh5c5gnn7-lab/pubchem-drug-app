@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>생활 속 약물 정보 검색</title>
+  <!-- 디자인 파일 연결 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 제목 영역 -->
+  <header>
+    <h1>💊 생활 속 약물 정보 검색</h1>
+    <p class="subtitle">PubChem 데이터베이스에서 약물 정보를 찾아보세요</p>
+  </header>
+
+  <main>
+    <!-- 검색 영역: form을 쓰면 Enter 키로도 검색할 수 있음 -->
+    <form id="searchForm">
+      <input
+        type="text"
+        id="drugInput"
+        placeholder="약물 이름을 영어로 입력하세요 (예: aspirin)"
+        autocomplete="off"
+        required
+      >
+      <button type="submit" id="searchBtn">검색</button>
+    </form>
+
+    <!-- 예시 약물 버튼: 누르면 바로 검색 -->
+    <div class="examples">
+      <span>예시:</span>
+      <button type="button" class="example-btn" data-name="aspirin">aspirin</button>
+      <button type="button" class="example-btn" data-name="ibuprofen">ibuprofen</button>
+      <button type="button" class="example-btn" data-name="acetaminophen">acetaminophen</button>
+      <button type="button" class="example-btn" data-name="caffeine">caffeine</button>
+    </div>
+
+    <!-- 안내/오류 메시지가 표시될 곳 (예: "검색 중...", "찾을 수 없습니다") -->
+    <p id="message"></p>
+
+    <!-- 검색 결과 카드가 표시될 곳 (app.js가 내용을 채움) -->
+    <section id="result"></section>
+  </main>
+
+  <!-- 하단 안내 문구 -->
+  <footer>
+    <p>※ 이 앱의 정보는 PubChem의 화학 정보이며, 의학적 조언이 아닙니다. 약 복용은 의사·약사와 상담하세요.</p>
+    <p>데이터 출처: <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank">PubChem (NCBI)</a></p>
+  </footer>
+
+  <!-- 동작 파일 연결 (HTML을 다 읽은 뒤 실행되도록 맨 아래에 둠) -->
+  <script src="app.js"></script>
+</body>
+</html>

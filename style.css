@@ -1,0 +1,260 @@
+/* ===============================
+   생활 속 약물 정보 검색 - style.css
+   =============================== */
+
+/* 자주 쓰는 색을 변수로 정해 두면 나중에 한 번에 바꾸기 쉽다 */
+:root {
+  --main: #2b7a78;        /* 메인 색 (청록) */
+  --main-dark: #1f5f5d;   /* 버튼에 마우스를 올렸을 때 */
+  --main-light: #def2f1;  /* 연한 배경 */
+  --text: #222;
+  --gray: #666;
+  --border: #ddd;
+  --error: #c0392b;
+  --bg: #f6f8f8;
+}
+
+/* 모든 요소의 크기 계산에 테두리·여백을 포함시킨다 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* -------- 상단 제목 -------- */
+header {
+  background: var(--main);
+  color: white;
+  text-align: center;
+  padding: 40px 16px 32px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* -------- 본문 영역 (가운데 정렬, 최대 너비 제한) -------- */
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* -------- 검색창 -------- */
+#searchForm {
+  display: flex;   /* 입력창과 버튼을 가로로 나란히 */
+  gap: 8px;
+}
+
+#drugInput {
+  flex: 1;         /* 남는 공간을 입력창이 모두 차지 */
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+
+#drugInput:focus {
+  border-color: var(--main);
+}
+
+#searchBtn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: var(--main);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  background: var(--main-dark);
+}
+
+/* 검색 중일 때(비활성화) 흐리게 */
+#searchBtn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* -------- 예시 버튼 -------- */
+.examples {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap; /* 화면이 좁으면 다음 줄로 */
+  align-items: center;
+  gap: 6px;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.example-btn {
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  color: var(--main);
+  background: var(--main-light);
+  border: 1px solid var(--main);
+  border-radius: 999px; /* 알약 모양 */
+  cursor: pointer;
+}
+
+.example-btn:hover {
+  background: var(--main);
+  color: white;
+}
+
+/* -------- 안내/오류 메시지 -------- */
+#message {
+  margin: 20px 0 0;
+  min-height: 1.6em;
+}
+
+#message.info {
+  color: var(--gray);
+}
+
+#message.error {
+  color: var(--error);
+  font-weight: bold;
+}
+
+/* -------- 결과 카드 -------- */
+.card {
+  margin-top: 8px;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  margin: 0 0 16px;
+  color: var(--main);
+  border-bottom: 2px solid var(--main-light);
+  padding-bottom: 8px;
+}
+
+/* 이미지와 표를 가로로 배치 */
+.card-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.card-body img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  flex-shrink: 0; /* 이미지가 찌그러지지 않게 */
+}
+
+/* 정보 표 */
+table {
+  flex: 1;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  width: 110px;
+  color: var(--gray);
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+td {
+  word-break: break-word; /* 긴 IUPAC 이름도 줄바꿈 */
+}
+
+/* 설명 영역 */
+.description {
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 8px;
+}
+
+.description h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.description p {
+  margin: 0 0 8px;
+}
+
+.source,
+.no-desc {
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+/* PubChem 링크 */
+.more-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--main);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.more-link:hover {
+  text-decoration: underline;
+}
+
+/* -------- 하단 안내 -------- */
+footer {
+  max-width: 760px;
+  margin: 24px auto 0;
+  padding: 16px;
+  text-align: center;
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+footer a {
+  color: var(--main);
+}
+
+/* -------- 휴대폰 화면 (폭 600px 이하) -------- */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  /* 이미지와 표를 세로로 쌓기 */
+  .card-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    padding: 16px;
+  }
+}
